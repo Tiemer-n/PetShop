@@ -143,7 +143,7 @@ public class Welcome_Menu extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "You are sussessfully logged in");
              setVisible(false);
              dispose();
-             shop.User(username);
+             shop.setUser(username);
              shop.show();
              
          }else if (getUsernamePassword(username,password) == 0){

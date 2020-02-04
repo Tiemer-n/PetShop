@@ -11,6 +11,16 @@ package petshop;
  */
 public class Shop extends javax.swing.JFrame {
 
+    
+    
+    String username;
+    
+    
+    
+    public void setUser(String user){
+        this.username = user;
+        jLabel2.setText("Welcome: "+username);
+    }
     /**
      * Creates new form Shop
      */
@@ -386,11 +396,7 @@ public class Shop extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
-    public void User(String username){
-        jLabel2.setText("Welcome: "+username);
-        
-        
-    }
+   
 
 
 }
