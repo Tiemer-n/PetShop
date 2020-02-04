@@ -139,7 +139,13 @@ public class Welcome_Menu extends javax.swing.JFrame {
          }else if(getAdminCredentials(username,password) == 1){
              JOptionPane.showMessageDialog(null, "You are sussessfully logged in as Admin");
          }else if(getUsernamePassword(username,password) == 1){
+             Shop shop = new Shop();
              JOptionPane.showMessageDialog(null, "You are sussessfully logged in");
+             setVisible(false);
+             dispose();
+             shop.User(username);
+             shop.show();
+             
          }else if (getUsernamePassword(username,password) == 0){
              JOptionPane.showMessageDialog(null, "Username or Password is incorrect");
          }
