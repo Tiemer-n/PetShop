@@ -8,11 +8,16 @@ package petshop;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.Timer;
@@ -475,6 +480,19 @@ public class Shop extends javax.swing.JFrame {
 
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
+        int catAmount = (Integer) CatSpinner.getValue();
+        int dogAmount = (Integer) DogSpinner.getValue();
+        int fishAmount = (Integer) FishSpinner.getValue();
+        int rabbitAmount = (Integer) RabbitSpinner.getValue();
+        int tboneAmount = (Integer) ToyBoneSpinner.getValue();
+        int fmouseAmount = (Integer) FakeMouseSpinner.getValue();
+        int brushAmount = (Integer) BrushSpinner.getValue();
+        int ballAmount = (Integer) BallSpinner.getValue();
+        int catfAmount = (Integer) CatFoodSpinner.getValue();
+        int dogfAmount = (Integer) DogFoodSpinner.getValue();
+        int fishfAmount = (Integer) FishFoodSpinner.getValue();
+        int rabbitfAmount = (Integer) RabbitFoodSpinner.getValue();
+        
         
         String amount = Amount.getText();
         if("__".equals(amount)){
@@ -483,6 +501,59 @@ public class Shop extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "There's nothing in your basket");
         }else{
             System.out.println("Your total was "+Amount.getText());
+            
+            File dirl = new File("res/log.txt");
+            
+            String time = DateFormat.getDateTimeInstance().format(new Date());
+            StringBuilder bought = new StringBuilder();
+            if( catAmount != 0){
+                bought.append("_Cat:").append(catAmount);
+            }
+            if( dogAmount != 0){
+                bought.append("_Dog:").append(dogAmount);
+            }
+            if( fishAmount != 0){
+                bought.append("_Fish:").append(fishAmount);
+            }
+            if( rabbitAmount != 0){
+                bought.append("_Rabbit:").append(rabbitAmount);
+            }
+            if( tboneAmount != 0){
+                bought.append("_ToyBone:").append(tboneAmount);
+            }
+            if( fmouseAmount != 0){
+                bought.append("_FakeMouse:").append(fmouseAmount);
+            }
+            if( brushAmount != 0){
+                bought.append("_Brush:").append(brushAmount);
+            }
+            if( ballAmount != 0){
+                bought.append("_ThrowingBall:").append(dogAmount);
+            }
+            if( catfAmount != 0){
+                bought.append("_CatFood:").append(catfAmount);
+            }
+            if( dogfAmount != 0){
+                bought.append("_DogFood:").append(dogfAmount);
+            }
+            if( fishfAmount != 0){
+                bought.append("_FishFood:").append(fishfAmount);
+            }
+            if( rabbitfAmount != 0){
+                bought.append("_RabbitFood:").append(rabbitfAmount);
+            }       
+            try{
+                BufferedWriter out = new BufferedWriter(new FileWriter(dirl,true));
+                out.newLine();
+                out.write(username +":_"+time+"_Items" + bought);
+                out.close();
+            } catch(FileNotFoundException e ){
+                e.printStackTrace();
+            } catch (IOException ex) {
+                Logger.getLogger(Shop.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, (username + ", you have succeffully bought these items"));
+            setAllZero();
         }
     }//GEN-LAST:event_BuyNowActionPerformed
 
@@ -529,7 +600,6 @@ public class Shop extends javax.swing.JFrame {
         Timer timer = new Timer(500, (ActionEvent e) -> {
             tickTock();
         });
-        
         timer.setRepeats(true);
         timer.setCoalesce(true);
         timer.setInitialDelay(0);
@@ -540,7 +610,20 @@ public class Shop extends javax.swing.JFrame {
     
   }
 
-    
+    public void setAllZero(){
+        CatSpinner.setValue(0);
+        DogSpinner.setValue(0);
+        FishSpinner.setValue(0);
+        RabbitSpinner.setValue(0);
+        ToyBoneSpinner.setValue(0);
+        FakeMouseSpinner.setValue(0);
+        BrushSpinner.setValue(0);
+        BallSpinner.setValue(0);
+        CatFoodSpinner.setValue(0);
+        DogFoodSpinner.setValue(0);
+        FishFoodSpinner.setValue(0);
+        RabbitFoodSpinner.setValue(0);
+    }
     
     public void getMaxStock(){
         
@@ -552,25 +635,77 @@ public class Shop extends javax.swing.JFrame {
             e.printStackTrace();
         }
         String str = (String) read.next();
-        String substring = str.length() > 2 ? str.substring(str.length() - 2) : str;
-        int Cat =  Integer.parseInt(substring);
-        read.next();
-        int Dog;
-        int Fish;
-        int Rabbit;
-        int ToyBone;
-        int FakeMouse;
-        int Brush;
-        int ThrowingBall;
-        int CatFood;
-        int DogFood;
-        int FishFood;
-        int RabbitFood;
+        int Cat =  Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Dog = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Fish = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Rabbit = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int ToyBone = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int FakeMouse = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Brush = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int ThrowingBall = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int CatFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int DogFood  = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int FishFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int RabbitFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
         
+        SpinnerNumberModel model = (SpinnerNumberModel) CatSpinner.getModel();
+        CatSpinner.setValue(0);
+        model.setMaximum(Cat);
         
-        System.out.println(Cat);
+        SpinnerNumberModel modeldog = (SpinnerNumberModel) DogSpinner.getModel();
+        DogSpinner.setValue(0);
+        modeldog.setMaximum(Dog);
         
-                
+        SpinnerNumberModel modelfish = (SpinnerNumberModel) FishSpinner.getModel();
+        FishSpinner.setValue(0);
+        modelfish.setMaximum(Fish);
+        
+        SpinnerNumberModel modelrabbit = (SpinnerNumberModel) RabbitSpinner.getModel();
+        RabbitSpinner.setValue(0);
+        modelrabbit.setMaximum(Rabbit);
+        
+        SpinnerNumberModel modeltoybone = (SpinnerNumberModel) ToyBoneSpinner.getModel();
+        ToyBoneSpinner.setValue(0);
+        modeltoybone.setMaximum(ToyBone);
+        
+        SpinnerNumberModel modelfakemouse = (SpinnerNumberModel) FakeMouseSpinner.getModel();
+        FakeMouseSpinner.setValue(0);
+        modelfakemouse.setMaximum(FakeMouse);
+        
+        SpinnerNumberModel modelbrush = (SpinnerNumberModel) BrushSpinner.getModel();
+        BrushSpinner.setValue(0);
+        modelbrush.setMaximum(Brush);
+        
+        SpinnerNumberModel modelthrowing = (SpinnerNumberModel) BallSpinner.getModel();
+        BallSpinner.setValue(0);
+        modelthrowing.setMaximum(ThrowingBall);
+        
+        SpinnerNumberModel modelcatfood = (SpinnerNumberModel) CatFoodSpinner.getModel();
+        CatFoodSpinner.setValue(0);
+        modelcatfood.setMaximum(CatFood);
+        
+        SpinnerNumberModel modeldogfood = (SpinnerNumberModel) DogFoodSpinner.getModel();
+        DogFoodSpinner.setValue(0);
+        modeldogfood.setMaximum(DogFood);
+        
+        SpinnerNumberModel modelfishfood = (SpinnerNumberModel) FishFoodSpinner.getModel();
+        FishFoodSpinner.setValue(0);
+        modelfishfood.setMaximum(FishFood);
+        
+        SpinnerNumberModel modelrabbitfood = (SpinnerNumberModel) RabbitFoodSpinner.getModel();
+        RabbitFoodSpinner.setValue(0);
+        modelrabbitfood.setMaximum(RabbitFood);
     }
     
     

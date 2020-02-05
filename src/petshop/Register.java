@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -218,7 +220,7 @@ public class Register extends javax.swing.JFrame {
     public void WriteToUsers(String username, String password) throws IOException{
         
         File dirl = new File("res/UsernameAndPasswords.txt");
-        
+        String time = DateFormat.getDateTimeInstance().format(new Date());
         try{
              BufferedWriter out = new BufferedWriter(new FileWriter(dirl,true));
              out.newLine();
