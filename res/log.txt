@@ -1,5 +1,6 @@
 
-another:_05-Feb-2020 15:49:59_Items_Cat:6_ToyBone:3_Brush:10
-another:_05-Feb-2020 15:50:30_Items_ToyBone:2
-another:_05-Feb-2020 15:56:45_Items_Cat:3_Dog:6_Fish:2_Rabbit:1
-Jeb:_05-Feb-2020 16:04:46_Items_Cat:20_Dog:10_Fish:10_Rabbit:10_ToyBone:10_FakeMouse:10_Brush:10_ThrowingBall:10_CatFood:20_DogFood:20_FishFood:20_RabbitFood:5
+
+Customer=another_Date=05-Feb-2020 17:26:23 Items=_Cat:1_RabbitFood:1
+Customer=another_Date=05-Feb-2020 17:26:30 Items=_Cat:1_Dog:1_Fish:1_Rabbit:3_Brush:1_ThrowingBall:1_RabbitFood:1
+Customer=another_Date=05-Feb-2020 17:39:23 Items=_Cat:1_Dog:1_Fish:1_Rabbit:2_FakeMouse:1_Brush:1
+Customer=another_Date=05-Feb-2020 17:40:32 Items=_Dog:2_ToyBone:2_FakeMouse:1_Brush:1_ThrowingBall:2_CatFood:1_DogFood:1_FishFood:1_RabbitFood:1
