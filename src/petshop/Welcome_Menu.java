@@ -155,6 +155,7 @@ public class Welcome_Menu extends javax.swing.JFrame {
              AdminConsole admin = new AdminConsole();
              dispose();
              setVisible(false);
+             admin.Alerts();
              admin.show();
              
          }else if(getUsernamePassword(username,password) == 1){

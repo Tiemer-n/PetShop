@@ -142,6 +142,7 @@ public class Shop extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
         jLabel1.setText("What would you like to buy?");
@@ -158,7 +159,7 @@ public class Shop extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel5.setText("Food:");
 
-        jLabel6.setText("Total:");
+        jLabel6.setText("Total:    £");
 
         Amount.setText("__");
 
@@ -264,7 +265,7 @@ public class Shop extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addGap(42, 42, 42)
+                                .addGap(20, 20, 20)
                                 .addComponent(Amount)
                                 .addGap(48, 48, 48))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -473,7 +474,7 @@ public class Shop extends javax.swing.JFrame {
         int TotalMoney = (catAmount * 30) + (dogAmount * 50) + (fishAmount * 10) + (rabbitAmount * 60) +
                         (tboneAmount * 5) + (fmouseAmount * 3) + (brushAmount * 5) + (ballAmount * 6) +
                         (catfAmount * 10) + (dogfAmount * 15) + (fishfAmount * 7) + (rabbitfAmount * 10);
-        Amount.setText("£ " + TotalMoney);
+        Amount.setText(Integer.toString(TotalMoney));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -510,7 +511,7 @@ public class Shop extends javax.swing.JFrame {
         String amount = Amount.getText();
         if("__".equals(amount)){
             JOptionPane.showMessageDialog(null, "You need to calculate total amount first");
-        }else if("£ 0".equals(amount)){
+        }else if("0".equals(amount)){
             JOptionPane.showMessageDialog(null, "There's nothing in your basket");
         }else{
             System.out.println("Your total was "+Amount.getText());
@@ -555,10 +556,11 @@ public class Shop extends javax.swing.JFrame {
             if( rabbitfAmount != 0){
                 bought.append("_RabbitFood:").append(rabbitfAmount);
             }       
+            int total = Integer.parseInt(Amount.getText());
             try{
                 BufferedWriter out = new BufferedWriter(new FileWriter(dirl,true));
                 out.newLine();
-                out.write("Customer="+username +"_Date="+time+" Items=" + bought);
+                out.write("Customer_"+username +" Date_"+time+" Items_" + bought +" Total_£"+total);
                 out.close();
             } catch(FileNotFoundException e ){
                 e.printStackTrace();
@@ -568,6 +570,140 @@ public class Shop extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, (username + ", you have succeffully bought these items"));
             setAllZero();
             Amount.setText("__");
+            
+            
+            File dirl2 = new File("res/Stock.txt");
+            Scanner read = null;
+            try{
+                read = new Scanner(dirl2);
+            }catch(FileNotFoundException e ){
+                e.printStackTrace();
+            }
+            String str = (String) read.next();
+            int Cat =  Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int Dog = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int Fish = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int Rabbit = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int ToyBone = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int FakeMouse = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int Brush = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int ThrowingBall = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int CatFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int DogFood  = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int FishFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            str = (String) read.next();
+            int RabbitFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+            
+            
+            Cat-=catAmount;
+            Dog-=dogAmount;
+            Fish-=fishAmount;
+            Rabbit-=rabbitAmount;
+            ToyBone-=tboneAmount;
+            FakeMouse-=fmouseAmount;
+            Brush-=brushAmount;
+            ThrowingBall-=ballAmount;
+            CatFood-=catfAmount;
+            DogFood-=dogfAmount;
+            FishFood-=fishfAmount;
+            RabbitFood-=rabbitfAmount;
+            
+            
+            String Cat1 = Integer.toString(Cat);
+            if(Cat < 10){
+                Cat1 = "0"+Cat;
+            }
+            String Dog1 = Integer.toString(Dog);
+            if(Dog < 10){
+                Dog1 = "0"+Dog;
+            }
+            String Fish1 = Integer.toString(Fish);
+            if(Fish < 10){
+                Fish1 = "0"+Fish;
+            }
+            String Rab1 = Integer.toString(Rabbit);
+            if(Rabbit < 10){
+                Rab1 = "0"+Rabbit;
+            }
+            String tbone = Integer.toString(ToyBone);
+            if(ToyBone < 10){
+                tbone = "0"+ToyBone;
+            }
+            String fmouse = Integer.toString(FakeMouse);
+            if(FakeMouse < 10){
+                fmouse = "0"+FakeMouse;
+            }
+            String brush = Integer.toString(Brush);
+            if(Brush < 10){
+                brush = "0"+Brush;
+            }
+            String ball = Integer.toString(ThrowingBall);
+            if(ThrowingBall < 10){
+                ball = "0"+ThrowingBall;
+            }
+            String catf = Integer.toString(CatFood);
+            if(CatFood < 10){
+                catf = "0"+CatFood;
+            }
+            String dogf = Integer.toString(DogFood);
+            if(DogFood < 10){
+                dogf = "0"+DogFood;
+            }
+            String fishf = Integer.toString(FishFood);
+            if(FishFood < 10){
+                fishf = "0"+FishFood;
+            }
+            String rabf = Integer.toString(RabbitFood);
+            if(RabbitFood < 10){
+                rabf = "0"+RabbitFood;
+            }
+            
+            File dirl3 = new File("res/Stock.txt");
+            try{
+                 BufferedWriter out = new BufferedWriter(new FileWriter(dirl3,false));
+                 out.write("Cat_" + Cat1);
+                 out.newLine();
+                 out.write("Dog_" + Dog1);
+                 out.newLine();
+                 out.write("Fish_" + Fish1);
+                 out.newLine();
+                 out.write("Rabbit_" + Rab1);
+                 out.newLine();
+                 out.write("ToyBone_" + tbone);
+                 out.newLine();
+                 out.write("FakeMouse_" + fmouse);
+                 out.newLine();
+                 out.write("Brush_" + brush);
+                 out.newLine();
+                 out.write("ThrowingBall_" + ball);
+                 out.newLine();
+                 out.write("CatFood_" + catf);
+                 out.newLine();
+                 out.write("DogFood_" + dogf);
+                 out.newLine();
+                 out.write("FishFood_" + fishf);
+                 out.newLine();
+                 out.write("RabbitFood_" + rabf);
+                 out.newLine();
+                 out.close();
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+            } catch (IOException ex) {
+                Logger.getLogger(Shop.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            getMaxStock();
+            
         }
     }//GEN-LAST:event_BuyNowActionPerformed
 

@@ -18,12 +18,4 @@ public class PetShop {
         Welcome_Menu menu = new Welcome_Menu();
         menu.show();
     }
-    
-    
-    
-    
-    
-    
-    
-    
 }

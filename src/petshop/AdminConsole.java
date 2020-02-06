@@ -8,6 +8,7 @@ package petshop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,10 +37,12 @@ public class AdminConsole extends javax.swing.JFrame {
         Output = new javax.swing.JTextArea();
         ClearBox = new javax.swing.JButton();
         LogContents = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ChangeStock = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        alertLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Lucida Bright", 2, 48)); // NOI18N
         jLabel1.setText("Admin Console");
@@ -63,10 +66,10 @@ public class AdminConsole extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Change stock");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ChangeStock.setText("Get stock");
+        ChangeStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ChangeStockActionPerformed(evt);
             }
         });
 
@@ -77,6 +80,8 @@ public class AdminConsole extends javax.swing.JFrame {
             }
         });
 
+        alertLabel.setText("__");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,31 +91,36 @@ public class AdminConsole extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 516, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(alertLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LogContents)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(ClearBox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2))
-                            .addComponent(jButton1))
+                            .addComponent(ChangeStock))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ClearBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(alertLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LogContents)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(ChangeStock)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ClearBox)
@@ -144,7 +154,7 @@ public class AdminConsole extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LogContentsActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ChangeStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeStockActionPerformed
         // TODO add your handling code here:
         Output.setText(null);
         String newline = "\n";
@@ -195,7 +205,7 @@ public class AdminConsole extends javax.swing.JFrame {
         Output.append("RabbitFood: "+ RabbitFood + newline);
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ChangeStockActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -239,12 +249,117 @@ public class AdminConsole extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void Alerts(){
+        
+        
+        File dirl = new File("res/Stock.txt");
+        Scanner read = null;
+        try{
+            read = new Scanner(dirl);
+        }catch(FileNotFoundException e ){
+            e.printStackTrace();
+        }
+        String str = (String) read.next();
+        int Cat =  Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Dog = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Fish = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Rabbit = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int ToyBone = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int FakeMouse = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int Brush = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int ThrowingBall = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int CatFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int DogFood  = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int FishFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        str = (String) read.next();
+        int RabbitFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
+        
+        
+        StringBuilder message = new StringBuilder();
+        int check = 0;
+        if(Cat < 3){
+            message.append("Cat, ");
+            check++;
+        }
+        if(Dog < 3 ){
+            message.append("Dog, ");
+            check++;
+        }
+        if(Fish < 3 ){
+            message.append("Fish, ");
+            check++;
+        }
+        if(Rabbit < 3 ){
+            message.append("Rabbit, ");
+            check++;
+        }
+        if(ToyBone < 3 ){
+            message.append("ToyBone, ");
+            check++;
+        }
+        if(FakeMouse < 3 ){
+            message.append("FakeMouse, ");
+            check++;
+        }
+        if(Brush < 3 ){
+            message.append("Brush, ");
+            check++;
+        }
+        if(ThrowingBall < 3 ){
+            message.append("ThowingBall, ");
+            check++;
+        }
+        if(CatFood < 3 ){
+            message.append("CatFood, ");
+            check++;
+        }if(DogFood < 3 ){
+            message.append("DogFood, ");
+            check++;
+        }if(FishFood < 3 ){
+            message.append("FishFood, ");
+            check++;
+        }
+        if(RabbitFood < 3 ){
+            message.append("RabbitFoood, ");
+            check++;
+        }
+        
+        if(check == 1 ){
+            message.append("is running low!");
+            JOptionPane.showMessageDialog(null, message);
+            alertLabel.setText(message.toString());
+        }else if (check > 1){
+            message.append("are all running low!");
+            JOptionPane.showMessageDialog(null, message);
+            alertLabel.setText(message.toString());
+        }
+        
+        
+        
+        
+    }
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ChangeStock;
     private javax.swing.JButton ClearBox;
     private javax.swing.JButton LogContents;
     private javax.swing.JTextArea Output;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel alertLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
