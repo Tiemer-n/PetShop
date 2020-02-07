@@ -32,14 +32,19 @@ public class AdminConsole extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Output = new javax.swing.JTextArea();
         ClearBox = new javax.swing.JButton();
         LogContents = new javax.swing.JButton();
-        ChangeStock = new javax.swing.JButton();
+        GetStock = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         alertLabel = new javax.swing.JLabel();
+        ChangeStock = new javax.swing.JButton();
+        UpdateAlerts = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -66,10 +71,10 @@ public class AdminConsole extends javax.swing.JFrame {
             }
         });
 
-        ChangeStock.setText("Get stock");
-        ChangeStock.addActionListener(new java.awt.event.ActionListener() {
+        GetStock.setText("Get stock");
+        GetStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChangeStockActionPerformed(evt);
+                GetStockActionPerformed(evt);
             }
         });
 
@@ -81,6 +86,20 @@ public class AdminConsole extends javax.swing.JFrame {
         });
 
         alertLabel.setText("__");
+
+        ChangeStock.setText("Change Sock");
+        ChangeStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChangeStockActionPerformed(evt);
+            }
+        });
+
+        UpdateAlerts.setText("Update Alerts");
+        UpdateAlerts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateAlertsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,17 +113,19 @@ public class AdminConsole extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(alertLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LogContents)
-                            .addComponent(ChangeStock))
+                        .addComponent(LogContents)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ClearBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ClearBox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2))
+                            .addComponent(GetStock)
+                            .addComponent(ChangeStock)
+                            .addComponent(UpdateAlerts))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -120,8 +141,12 @@ public class AdminConsole extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LogContents)
                         .addGap(18, 18, 18)
+                        .addComponent(GetStock)
+                        .addGap(18, 18, 18)
                         .addComponent(ChangeStock)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(UpdateAlerts)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ClearBox)
                             .addComponent(jButton2))))
@@ -147,14 +172,22 @@ public class AdminConsole extends javax.swing.JFrame {
         }catch(FileNotFoundException e){
             System.out.println("File Not Found");
         }
+        int check = 0;
         while(read.hasNext()){
-            Output.append(read.next() + newline + newline);
+            if(check < 4){
+                Output.append(read.next() + newline );
+                check++;
+            }else if(check == 4){
+                Output.append(read.next() + newline + newline);
+                check = 0;
+            }
+            
             
         }
         
     }//GEN-LAST:event_LogContentsActionPerformed
 
-    private void ChangeStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeStockActionPerformed
+    private void GetStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetStockActionPerformed
         // TODO add your handling code here:
         Output.setText(null);
         String newline = "\n";
@@ -205,7 +238,7 @@ public class AdminConsole extends javax.swing.JFrame {
         Output.append("RabbitFood: "+ RabbitFood + newline);
         
         
-    }//GEN-LAST:event_ChangeStockActionPerformed
+    }//GEN-LAST:event_GetStockActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -214,6 +247,18 @@ public class AdminConsole extends javax.swing.JFrame {
         this.dispose();
         login.show();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ChangeStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeStockActionPerformed
+        // TODO add your handling code here:
+        Output.setText(null);
+        ChangeStock stock = new ChangeStock();
+        stock.show();
+    }//GEN-LAST:event_ChangeStockActionPerformed
+
+    private void UpdateAlertsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAlertsActionPerformed
+        // TODO add your handling code here:
+        Alerts();
+    }//GEN-LAST:event_UpdateAlertsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,7 +294,7 @@ public class AdminConsole extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void Alerts(){
         
         
@@ -288,49 +333,49 @@ public class AdminConsole extends javax.swing.JFrame {
         
         StringBuilder message = new StringBuilder();
         int check = 0;
-        if(Cat < 3){
+        if(Cat < 5){
             message.append("Cat, ");
             check++;
         }
-        if(Dog < 3 ){
+        if(Dog < 5 ){
             message.append("Dog, ");
             check++;
         }
-        if(Fish < 3 ){
+        if(Fish < 5 ){
             message.append("Fish, ");
             check++;
         }
-        if(Rabbit < 3 ){
+        if(Rabbit < 5 ){
             message.append("Rabbit, ");
             check++;
         }
-        if(ToyBone < 3 ){
+        if(ToyBone < 5 ){
             message.append("ToyBone, ");
             check++;
         }
-        if(FakeMouse < 3 ){
+        if(FakeMouse < 5 ){
             message.append("FakeMouse, ");
             check++;
         }
-        if(Brush < 3 ){
+        if(Brush < 5 ){
             message.append("Brush, ");
             check++;
         }
-        if(ThrowingBall < 3 ){
+        if(ThrowingBall < 5 ){
             message.append("ThowingBall, ");
             check++;
         }
-        if(CatFood < 3 ){
+        if(CatFood < 5 ){
             message.append("CatFood, ");
             check++;
-        }if(DogFood < 3 ){
+        }if(DogFood < 5 ){
             message.append("DogFood, ");
             check++;
-        }if(FishFood < 3 ){
+        }if(FishFood < 5 ){
             message.append("FishFood, ");
             check++;
         }
-        if(RabbitFood < 3 ){
+        if(RabbitFood < 5 ){
             message.append("RabbitFoood, ");
             check++;
         }
@@ -343,6 +388,8 @@ public class AdminConsole extends javax.swing.JFrame {
             message.append("are all running low!");
             JOptionPane.showMessageDialog(null, message);
             alertLabel.setText(message.toString());
+        }else if (check == 0){
+            alertLabel.setText("__");
         }
         
         
@@ -357,9 +404,12 @@ public class AdminConsole extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ChangeStock;
     private javax.swing.JButton ClearBox;
+    private javax.swing.JButton GetStock;
     private javax.swing.JButton LogContents;
     private javax.swing.JTextArea Output;
+    private javax.swing.JButton UpdateAlerts;
     private javax.swing.JLabel alertLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -1,14 +1,9 @@
-
-Customer_another Date_05-Feb-2020 17:26:23 Items__Cat:1_RabbitFood:1
-Customer_another Date_05-Feb-2020 17:26:30 Items__Cat:1_Dog:1_Fish:1_Rabbit:3_Brush:1_ThrowingBall:1_RabbitFood:1
-Customer_another Date_05-Feb-2020 17:39:23 Items__Cat:1_Dog:1_Fish:1_Rabbit:2_FakeMouse:1_Brush:1
-Customer_another Date_05-Feb-2020 17:40:32 Items__Dog:2_ToyBone:2_FakeMouse:1_Brush:1_ThrowingBall:2_CatFood:1_DogFood:1_FishFood:1_RabbitFood:1
-Customer_null Date_05-Feb-2020 19:44:15 Items__Cat:3
-Customer_another Date_05-Feb-2020 19:46:28 Items__Cat:2_ToyBone:1_ThrowingBall:0_RabbitFood:2
-Customer_another Date_05-Feb-2020 19:50:11 Items__Cat:3_ToyBone:2
-Customer_another Date_05-Feb-2020 20:11:09 Items__Cat:1_ToyBone:1_CatFood:3
-Customer_another Date_05-Feb-2020 20:11:52 Items__Cat:6_ToyBone:7_CatFood:7
-Customer_another Date_05-Feb-2020 20:12:55 Items__Fish:3_Rabbit:3_Brush:4_ThrowingBall:0_FishFood:2_RabbitFood:2
-Customer_null Date_05-Feb-2020 21:03:01 Items__Rabbit:5_FakeMouse:5_FishFood:2_RabbitFood:5 Total_£379
+﻿Customer_null Date_05-Feb-2020 21:03:01 Items__Rabbit:5_FakeMouse:5_FishFood:2_RabbitFood:5 Total_£379
 Customer_another Date_05-Feb-2020 22:29:26 Items__Dog:3 Total_£150
 Customer_another Date_05-Feb-2020 22:31:09 Items__Rabbit:1 Total_£60
+Customer_another Date_06-Feb-2020 17:04:03 Items__ToyBone:17_FakeMouse:3 Total_£94
+Customer_another Date_06-Feb-2020 17:08:47 Items__ToyBone:5 Total_£25
+Customer_porrrpy Date_06-Feb-2020 17:14:29 Items__Cat:2_FakeMouse:1_Brush:1_ThrowingBall:0_CatFood:1 Total_£84
+Customer_null Date_06-Feb-2020 21:21:03 Items__Brush:2_CatFood:9 Total_£100
+Customer_null Date_06-Feb-2020 21:21:52 Items__CatFood:8 Total_£80
+Customer_null Date_07-Feb-2020 16:54:17 Items__Cat:3_Dog:5_FakeMouse:2 Total_£36

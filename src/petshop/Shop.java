@@ -40,6 +40,22 @@ public class Shop extends javax.swing.JFrame {
         ClockPane();
         getMaxStock();
     }
+    public void disableButtons(String animal){
+        adoptCat.setEnabled(false);
+        adoptDog.setEnabled(false);
+        adoptRabbit.setEnabled(false);
+        adoptFish.setEnabled(false);
+        
+        if(animal.equals("cat")){
+            catAmount++;
+        }else if(animal.equals("dog")){
+            dogAmount++;
+        }else if(animal.equals("fish")){
+            fishAmount++;
+        }else if(animal.equals("rabbit")){
+            rabbitAmount++;
+        }
+    }
     /**
      * Creates new form Shop
      */
@@ -91,8 +107,6 @@ public class Shop extends javax.swing.JFrame {
         DogSpinner = new javax.swing.JSpinner();
         FishSpinner = new javax.swing.JSpinner();
         RabbitSpinner = new javax.swing.JSpinner();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         clock = new javax.swing.JLabel();
         ToyBoneSpinner = new javax.swing.JSpinner();
         FakeMouseSpinner = new javax.swing.JSpinner();
@@ -104,6 +118,11 @@ public class Shop extends javax.swing.JFrame {
         RabbitFoodSpinner = new javax.swing.JSpinner();
         BuyNow = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        adoptCat = new javax.swing.JToggleButton();
+        adoptDog = new javax.swing.JToggleButton();
+        adoptFish = new javax.swing.JToggleButton();
+        adoptRabbit = new javax.swing.JToggleButton();
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel16.setText("Cat");
 
@@ -202,20 +221,6 @@ public class Shop extends javax.swing.JFrame {
 
         RabbitSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
 
-        jButton2.setText("setMax 20");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("setMax 6");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         clock.setText("(Date and Time)");
 
         ToyBoneSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
@@ -248,6 +253,31 @@ public class Shop extends javax.swing.JFrame {
             }
         });
 
+        adoptCat.setText("Adopt");
+        adoptCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adoptCatActionPerformed(evt);
+            }
+        });
+
+        adoptDog.setText("Adopt");
+        adoptDog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adoptDogActionPerformed(evt);
+            }
+        });
+
+        adoptFish.setText("Adopt");
+
+        adoptRabbit.setText("Adopt");
+        adoptRabbit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adoptRabbitActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("(you can only adopt one animal at a time)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -255,107 +285,117 @@ public class Shop extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(20, 20, 20)
-                                .addComponent(Amount)
-                                .addGap(48, 48, 48))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(BuyNow)
-                                .addGap(15, 15, 15))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clock, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(27, 27, 27)
-                                                    .addComponent(CatFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(47, 47, 47)
-                                                    .addComponent(DogFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(33, 33, Short.MAX_VALUE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel20)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jLabel21)
-                                                    .addGap(18, 18, 18)))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel22)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(6, 6, 6)
-                                                    .addComponent(FishFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(36, 36, 36)
-                                                    .addComponent(jLabel23))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(37, 37, 37)
-                                                    .addComponent(RabbitFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addContainerGap())))
-                                .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jButton1)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(57, 57, 57)
+                                            .addComponent(BuyNow)
+                                            .addGap(15, 15, 15))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel8)
-                                                .addComponent(CatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(50, 50, 50)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel9)
-                                                .addComponent(DogSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(54, 54, 54)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel10)
-                                                .addComponent(FishSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(71, 71, 71)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel11)
-                                                .addComponent(RabbitSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel12)
-                                                .addComponent(ToyBoneSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(56, 56, 56)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel13)
-                                                .addComponent(FakeMouseSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(53, 53, 53)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel14)
-                                                .addComponent(BrushSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(43, 43, 43)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(6, 6, 6)
-                                                    .addComponent(BallSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(jLabel15))))
-                                    .addGap(54, 54, 54)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(clock, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15))))))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel6)
+                                            .addGap(20, 20, 20)
+                                            .addComponent(Amount)
+                                            .addGap(48, 48, 48))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(27, 27, 27)
+                                                        .addComponent(CatFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(47, 47, 47)
+                                                        .addComponent(DogFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(33, 33, Short.MAX_VALUE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel20)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jLabel21)
+                                                        .addGap(18, 18, 18)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel22)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(FishFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(36, 36, 36)
+                                                        .addComponent(jLabel23))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(37, 37, 37)
+                                                        .addComponent(RabbitFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addContainerGap())))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel12)
+                                                    .addComponent(ToyBoneSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(56, 56, 56)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel13)
+                                                    .addComponent(FakeMouseSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(53, 53, 53)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel14)
+                                                    .addComponent(BrushSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(43, 43, 43)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(BallSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jLabel15)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(CatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(adoptCat)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel9)
+                                                    .addComponent(DogSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(adoptDog)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel10)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(FishSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(adoptFish)))
+                                                .addGap(2, 2, 2)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel11)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(RabbitSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(adoptRabbit)))))
+                                        .addGap(26, 26, 26))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +408,9 @@ public class Shop extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -380,8 +422,12 @@ public class Shop extends javax.swing.JFrame {
                     .addComponent(CatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DogSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FishSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RabbitSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                    .addComponent(RabbitSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adoptCat)
+                    .addComponent(adoptDog)
+                    .addComponent(adoptFish)
+                    .addComponent(adoptRabbit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
@@ -420,10 +466,7 @@ public class Shop extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton3)
-                                    .addComponent(jButton1)))
+                                .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -432,7 +475,7 @@ public class Shop extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BuyNow))))
                     .addComponent(DogFoodSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
@@ -453,13 +496,13 @@ public class Shop extends javax.swing.JFrame {
     private void RabbitComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RabbitComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RabbitComboBox2ActionPerformed
-
+    private int catAmount = 0;
+    private int dogAmount = 0;
+    private int fishAmount = 0;
+    private int rabbitAmount = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int catAmount = (Integer) CatSpinner.getValue();
-        int dogAmount = (Integer) DogSpinner.getValue();
-        int fishAmount = (Integer) FishSpinner.getValue();
-        int rabbitAmount = (Integer) RabbitSpinner.getValue();
+        
         int tboneAmount = (Integer) ToyBoneSpinner.getValue();
         int fmouseAmount = (Integer) FakeMouseSpinner.getValue();
         int brushAmount = (Integer) BrushSpinner.getValue();
@@ -476,21 +519,6 @@ public class Shop extends javax.swing.JFrame {
                         (catfAmount * 10) + (dogfAmount * 15) + (fishfAmount * 7) + (rabbitfAmount * 10);
         Amount.setText(Integer.toString(TotalMoney));
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        SpinnerNumberModel model = (SpinnerNumberModel) CatSpinner.getModel();
-        CatSpinner.setValue(0);
-        model.setMaximum(20);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        SpinnerNumberModel model = (SpinnerNumberModel) CatSpinner.getModel();
-        CatSpinner.setValue(0);
-        model.setMaximum(6);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
@@ -572,135 +600,9 @@ public class Shop extends javax.swing.JFrame {
             Amount.setText("__");
             
             
-            File dirl2 = new File("res/Stock.txt");
-            Scanner read = null;
-            try{
-                read = new Scanner(dirl2);
-            }catch(FileNotFoundException e ){
-                e.printStackTrace();
-            }
-            String str = (String) read.next();
-            int Cat =  Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int Dog = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int Fish = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int Rabbit = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int ToyBone = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int FakeMouse = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int Brush = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int ThrowingBall = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int CatFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int DogFood  = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int FishFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
-            str = (String) read.next();
-            int RabbitFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
             
-            
-            Cat-=catAmount;
-            Dog-=dogAmount;
-            Fish-=fishAmount;
-            Rabbit-=rabbitAmount;
-            ToyBone-=tboneAmount;
-            FakeMouse-=fmouseAmount;
-            Brush-=brushAmount;
-            ThrowingBall-=ballAmount;
-            CatFood-=catfAmount;
-            DogFood-=dogfAmount;
-            FishFood-=fishfAmount;
-            RabbitFood-=rabbitfAmount;
-            
-            
-            String Cat1 = Integer.toString(Cat);
-            if(Cat < 10){
-                Cat1 = "0"+Cat;
-            }
-            String Dog1 = Integer.toString(Dog);
-            if(Dog < 10){
-                Dog1 = "0"+Dog;
-            }
-            String Fish1 = Integer.toString(Fish);
-            if(Fish < 10){
-                Fish1 = "0"+Fish;
-            }
-            String Rab1 = Integer.toString(Rabbit);
-            if(Rabbit < 10){
-                Rab1 = "0"+Rabbit;
-            }
-            String tbone = Integer.toString(ToyBone);
-            if(ToyBone < 10){
-                tbone = "0"+ToyBone;
-            }
-            String fmouse = Integer.toString(FakeMouse);
-            if(FakeMouse < 10){
-                fmouse = "0"+FakeMouse;
-            }
-            String brush = Integer.toString(Brush);
-            if(Brush < 10){
-                brush = "0"+Brush;
-            }
-            String ball = Integer.toString(ThrowingBall);
-            if(ThrowingBall < 10){
-                ball = "0"+ThrowingBall;
-            }
-            String catf = Integer.toString(CatFood);
-            if(CatFood < 10){
-                catf = "0"+CatFood;
-            }
-            String dogf = Integer.toString(DogFood);
-            if(DogFood < 10){
-                dogf = "0"+DogFood;
-            }
-            String fishf = Integer.toString(FishFood);
-            if(FishFood < 10){
-                fishf = "0"+FishFood;
-            }
-            String rabf = Integer.toString(RabbitFood);
-            if(RabbitFood < 10){
-                rabf = "0"+RabbitFood;
-            }
-            
-            File dirl3 = new File("res/Stock.txt");
-            try{
-                 BufferedWriter out = new BufferedWriter(new FileWriter(dirl3,false));
-                 out.write("Cat_" + Cat1);
-                 out.newLine();
-                 out.write("Dog_" + Dog1);
-                 out.newLine();
-                 out.write("Fish_" + Fish1);
-                 out.newLine();
-                 out.write("Rabbit_" + Rab1);
-                 out.newLine();
-                 out.write("ToyBone_" + tbone);
-                 out.newLine();
-                 out.write("FakeMouse_" + fmouse);
-                 out.newLine();
-                 out.write("Brush_" + brush);
-                 out.newLine();
-                 out.write("ThrowingBall_" + ball);
-                 out.newLine();
-                 out.write("CatFood_" + catf);
-                 out.newLine();
-                 out.write("DogFood_" + dogf);
-                 out.newLine();
-                 out.write("FishFood_" + fishf);
-                 out.newLine();
-                 out.write("RabbitFood_" + rabf);
-                 out.newLine();
-                 out.close();
-            }catch(FileNotFoundException e){
-                e.printStackTrace();
-            } catch (IOException ex) {
-                Logger.getLogger(Shop.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ChangeFiles change = new ChangeFiles();
+            change.ChangeStock(-catAmount, -dogAmount, -fishAmount, -rabbitAmount, -tboneAmount, -fmouseAmount, -brushAmount, -ballAmount, -catfAmount, -dogfAmount, -fishfAmount, -rabbitfAmount);
             
             getMaxStock();
             
@@ -714,6 +616,36 @@ public class Shop extends javax.swing.JFrame {
         this.dispose();
         login.show();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void adoptCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adoptCatActionPerformed
+        // TODO add your handling code here:
+        
+        
+        Adopt adopt = new Adopt();
+        setVisible(false);
+        this.dispose();
+        adopt.setAnimal("cat");
+        adopt.show();
+    }//GEN-LAST:event_adoptCatActionPerformed
+
+    private void adoptDogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adoptDogActionPerformed
+        // TODO add your handling code here:
+        Adopt adopt = new Adopt();
+        setVisible(false);
+        this.dispose();
+        adopt.setAnimal("dog");
+        adopt.show();
+    }//GEN-LAST:event_adoptDogActionPerformed
+
+    private void adoptRabbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adoptRabbitActionPerformed
+        // TODO add your handling code here:
+        Adopt adopt = new Adopt();
+        setVisible(false);
+        this.dispose();
+        adopt.setAnimal("rabbit");
+        adopt.show();
+        
+    }//GEN-LAST:event_adoptRabbitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -885,10 +817,12 @@ public class Shop extends javax.swing.JFrame {
     private javax.swing.JSpinner RabbitFoodSpinner;
     private javax.swing.JSpinner RabbitSpinner;
     private javax.swing.JSpinner ToyBoneSpinner;
+    private javax.swing.JToggleButton adoptCat;
+    private javax.swing.JToggleButton adoptDog;
+    private javax.swing.JToggleButton adoptFish;
+    private javax.swing.JToggleButton adoptRabbit;
     private javax.swing.JLabel clock;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -910,6 +844,7 @@ public class Shop extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
