@@ -189,13 +189,13 @@ public class Shop extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Cat: £30");
+        jLabel8.setText("Cat: £50");
 
-        jLabel9.setText("Dog: £50");
+        jLabel9.setText("Dog: £300");
 
         jLabel10.setText("Fish: £10");
 
-        jLabel11.setText("Rabbit: £60");
+        jLabel11.setText("Rabbit: £35");
 
         jLabel12.setText("Toy Bone: £5");
 
@@ -514,7 +514,7 @@ public class Shop extends javax.swing.JFrame {
         
         
         
-        int TotalMoney = (catAmount * 30) + (dogAmount * 50) + (fishAmount * 10) + (rabbitAmount * 60) +
+        int TotalMoney = (catAmount * 50) + (dogAmount * 300) + (fishAmount * 10) + (rabbitAmount * 35) +
                         (tboneAmount * 5) + (fmouseAmount * 3) + (brushAmount * 5) + (ballAmount * 6) +
                         (catfAmount * 10) + (dogfAmount * 15) + (fishfAmount * 7) + (rabbitfAmount * 10);
         Amount.setText(Integer.toString(TotalMoney));
@@ -602,7 +602,7 @@ public class Shop extends javax.swing.JFrame {
             
             
             ChangeFiles change = new ChangeFiles();
-            change.ChangeStock(-catAmount, -dogAmount, -fishAmount, -rabbitAmount, -tboneAmount, -fmouseAmount, -brushAmount, -ballAmount, -catfAmount, -dogfAmount, -fishfAmount, -rabbitfAmount);
+            change.ChangeStock(0, 0, 0, 0, -tboneAmount, -fmouseAmount, -brushAmount, -ballAmount, -catfAmount, -dogfAmount, -fishfAmount, -rabbitfAmount);
             
             getMaxStock();
             
@@ -624,7 +624,7 @@ public class Shop extends javax.swing.JFrame {
         Adopt adopt = new Adopt();
         setVisible(false);
         this.dispose();
-        adopt.setAnimal("cat");
+        adopt.setAnimal("cat",username);
         adopt.show();
     }//GEN-LAST:event_adoptCatActionPerformed
 
@@ -633,7 +633,7 @@ public class Shop extends javax.swing.JFrame {
         Adopt adopt = new Adopt();
         setVisible(false);
         this.dispose();
-        adopt.setAnimal("dog");
+        adopt.setAnimal("dog",username);
         adopt.show();
     }//GEN-LAST:event_adoptDogActionPerformed
 
@@ -642,7 +642,7 @@ public class Shop extends javax.swing.JFrame {
         Adopt adopt = new Adopt();
         setVisible(false);
         this.dispose();
-        adopt.setAnimal("rabbit");
+        adopt.setAnimal("rabbit",username);
         adopt.show();
         
     }//GEN-LAST:event_adoptRabbitActionPerformed

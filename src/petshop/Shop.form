@@ -443,12 +443,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cat: &#xa3;30"/>
+        <Property name="text" type="java.lang.String" value="Cat: &#xa3;50"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dog: &#xa3;50"/>
+        <Property name="text" type="java.lang.String" value="Dog: &#xa3;300"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
@@ -458,7 +458,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rabbit: &#xa3;60"/>
+        <Property name="text" type="java.lang.String" value="Rabbit: &#xa3;35"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">

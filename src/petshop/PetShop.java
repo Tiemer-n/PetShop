@@ -15,6 +15,7 @@ public class PetShop {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println(172.55/2);
         Welcome_Menu menu = new Welcome_Menu();
         menu.show();
     }

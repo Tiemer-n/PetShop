@@ -5,10 +5,18 @@
  */
 package petshop;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -24,13 +32,15 @@ public class Adopt extends javax.swing.JFrame {
         initComponents();
     }
     private String animal;
+    private String username;
     
     private ArrayList <String> names = new ArrayList<>();
     private ArrayList <String> age = new ArrayList<>();
     private ArrayList <String> breed = new ArrayList<>();
     private ArrayList <String> description = new ArrayList<>();
     
-    public void setAnimal(String Animal){
+    public void setAnimal(String Animal, String user){
+        this.username = user;
         this.animal = Animal;
         File dirl = null;
         if(Animal.equals("cat")){
@@ -44,7 +54,7 @@ public class Adopt extends javax.swing.JFrame {
         }else if(Animal.equals("rabbit")){
             top.setText("Adopting a Rabbit:");
             AdoptThisAnimal.setText("Adopt this rabbit");
-            dirl = new File("res/Rabbits.txt");
+            dirl = new File("res/testdoc.txt");
         }
         
         Scanner read = null;
@@ -222,34 +232,98 @@ public class Adopt extends javax.swing.JFrame {
         String replaceAll1 = description1.replaceAll("_", " ");
         Description.setText(replaceAll1);
         
-        
-        
         System.out.println(AnimalNames.getSelectedItem().toString());
     }//GEN-LAST:event_AnimalNamesActionPerformed
 
     private void AdoptThisAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdoptThisAnimalActionPerformed
-        // TODO add your handling code here:
-        
-        
-        
-        
-        
-        
-        //set the code then dispose here
-        Shop shop = new Shop();
-        shop.disableButtons(animal);
-        setVisible(false);
-        this.dispose();
-        shop.show();
+       try{                                                
+           // TODO add your handling code here:
+           
+           
+           
+           // delete the specific lines where the animal is in the (animal).txt file
+           
+           
+           int index = names.indexOf(AnimalNames.getSelectedItem().toString());
+           String Name = names.get(index);
+           String Breed = breed.get(index);
+           
+           File dirl = new File("res/AdoptLog.txt");
+           String time = DateFormat.getDateTimeInstance().format(new Date());
+           try{
+               BufferedWriter out = new BufferedWriter(new FileWriter(dirl,true));
+               out.newLine();
+               out.write("Customer_"+username +" Date_"+time+" Adopted_" + Name +" Breed_"+ Breed + " Age_" + age.get(index));
+               out.close();
+           } catch(FileNotFoundException e ){
+               e.printStackTrace();
+           } catch (IOException ex) {
+               Logger.getLogger(Shop.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+           
+           
+
+
+            //finish deleting the speicfied animal ------------------------------------------------------------
+
+             //       File dirl2 = null;
+             //        if(animal.equals("cat")){
+             //            dirl2 = new File("res/Cats.txt");
+             //        }else if(animal.equals("dog")){
+             //            dirl2 = new File("res/Dogs.txt");
+             //        }else if(animal.equals("rabbit")){
+             //            dirl2 = new File("res/Rabbits.txt");
+             //        }
+             File dirl2 = new File("res/testdoc.txt");
+
+             
+             
+
+             
+             //finish deleting the speicfied animal --------------------------------------------------------------
+
+
+
+
+
+
+
+             //set the code then dispose here
+             Shop shop = new Shop();
+             shop.disableButtons(animal);
+             
+             ChangeFiles change = new ChangeFiles();
+             
+//             if(animal.equals("cat")){
+//                 change.ChangeStock(-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+//             }else if (animal.equals("dog")){
+//                 change.ChangeStock(0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+//             }else if (animal.equals("fish")){
+//                 change.ChangeStock(0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0);
+//             }
+             setVisible(false);
+             this.dispose();
+             shop.show();
+
+
+       } catch(Exception ex ){
+            Logger.getLogger(Adopt.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_AdoptThisAnimalActionPerformed
 
+    
+
+    
+    
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
         Shop shop = new Shop();
         setVisible(false);
         this.dispose();
+        shop.setUser(username);
         shop.show();
         
     }//GEN-LAST:event_CancelActionPerformed

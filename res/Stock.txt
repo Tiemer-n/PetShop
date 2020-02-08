@@ -1,11 +1,11 @@
 Cat_05
-Dog_02
+Dog_03
 Fish_03
 Rabbit_05
 ToyBone_08
 FakeMouse_06
-Brush_12
-ThrowingBall_14
+Brush_11
+ThrowingBall_10
 CatFood_22
 DogFood_11
 FishFood_18

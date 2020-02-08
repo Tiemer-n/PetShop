@@ -1,8 +1,12 @@
 Ruffles
-Golden_Retriever
 3
+Golden_Retriever
 loves_to_roll_in_the_mud
 Harold
 2
 Corgie
 he_likes_to_sleep_a_lot,_like_a_loooot
+Jerry
+5
+Blood_hound
+hes_a_very_serious,_so_dont_cross_him_the_wrong_way_

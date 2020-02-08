@@ -43,6 +43,8 @@ public class AdminConsole extends javax.swing.JFrame {
         alertLabel = new javax.swing.JLabel();
         ChangeStock = new javax.swing.JButton();
         UpdateAlerts = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        AddAdmin = new javax.swing.JToggleButton();
 
         jButton1.setText("jButton1");
 
@@ -101,6 +103,20 @@ public class AdminConsole extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton1.setText("Get Adopted Log");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        AddAdmin.setText("Add new admin account ");
+        AddAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddAdminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,9 +137,11 @@ public class AdminConsole extends javax.swing.JFrame {
                                 .addComponent(ClearBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton2))
-                            .addComponent(GetStock)
+                            .addComponent(UpdateAlerts)
+                            .addComponent(jToggleButton1)
                             .addComponent(ChangeStock)
-                            .addComponent(UpdateAlerts))
+                            .addComponent(GetStock)
+                            .addComponent(AddAdmin))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -141,12 +159,16 @@ public class AdminConsole extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LogContents)
                         .addGap(18, 18, 18)
+                        .addComponent(jToggleButton1)
+                        .addGap(18, 18, 18)
                         .addComponent(GetStock)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                        .addComponent(AddAdmin)
                         .addGap(18, 18, 18)
                         .addComponent(ChangeStock)
                         .addGap(18, 18, 18)
                         .addComponent(UpdateAlerts)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ClearBox)
                             .addComponent(jButton2))))
@@ -259,6 +281,46 @@ public class AdminConsole extends javax.swing.JFrame {
         // TODO add your handling code here:
         Alerts();
     }//GEN-LAST:event_UpdateAlertsActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        Output.setText(null);
+        String newline = "\n";
+        File dirl = new File("res/AdoptLog.txt");
+        Scanner read = null;
+        try{
+             read = new Scanner(dirl);
+        }catch(FileNotFoundException e){
+            System.out.println("File Not Found");
+        }
+        int check = 0;
+        while(read.hasNext()){
+            if(check < 5){
+                Output.append(read.next() + newline );
+                check++;
+            }else if(check == 5){
+                Output.append(read.next() + newline + newline);
+                check = 0;
+            }
+            
+            
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void AddAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAdminActionPerformed
+        // TODO add your handling code here:
+        RegisterAdmin admin = new RegisterAdmin();
+        setVisible(false);
+        this.dispose();
+        admin.show();
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_AddAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -402,6 +464,7 @@ public class AdminConsole extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton AddAdmin;
     private javax.swing.JButton ChangeStock;
     private javax.swing.JButton ClearBox;
     private javax.swing.JButton GetStock;
@@ -413,5 +476,6 @@ public class AdminConsole extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
