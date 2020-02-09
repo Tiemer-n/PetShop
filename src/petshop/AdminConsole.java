@@ -296,10 +296,10 @@ public class AdminConsole extends javax.swing.JFrame {
         }
         int check = 0;
         while(read.hasNext()){
-            if(check < 5){
+            if(check < 6){
                 Output.append(read.next() + newline );
                 check++;
-            }else if(check == 5){
+            }else if(check == 6){
                 Output.append(read.next() + newline + newline);
                 check = 0;
             }

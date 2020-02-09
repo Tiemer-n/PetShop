@@ -1,7 +1,7 @@
-Cat_05
-Dog_03
+Cat_04
+Dog_02
 Fish_03
-Rabbit_05
+Rabbit_02
 ToyBone_08
 FakeMouse_06
 Brush_11

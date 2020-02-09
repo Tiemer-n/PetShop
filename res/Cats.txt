@@ -5,7 +5,7 @@ she_likes_to_be_playing_with_her_owner_all_the_time
 Taia
 4
 White_Tabby
-She_loves_attention_and_playing_all_the_time
+#
 Fluffy
 2
 Torby
@@ -18,3 +18,7 @@ Toby
 3
 Ragdoll
 he_just_stares_all_the_time...
+Taia
+3
+White_Tabby
+loves_attention__and_playing_all_the_time_

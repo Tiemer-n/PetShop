@@ -1,9 +1,2 @@
-
-Customer_null Date_08-Feb-2020 00:32:33 Adopted_Fluffy Breed_Lionhead_rabbit Age_2
-Customer_null Date_08-Feb-2020 00:39:34 Adopted_Ruby Breed_Lionhead_rabbit Age_2
-Customer_null Date_08-Feb-2020 00:41:25 Adopted_Ruby Breed_Lionhead_rabbit Age_2
-Customer_null Date_08-Feb-2020 20:05:28 Adopted_Toby Breed_Ragdoll Age_3
-Customer_null Date_08-Feb-2020 20:07:07 Adopted_Tom Breed_English_Lop Age_3
-Customer_null Date_08-Feb-2020 20:08:11 Adopted_Tom Breed_English_Lop Age_3
-Customer_null Date_08-Feb-2020 20:14:14 Adopted_Harvey Breed_Dutch_rabbit Age_3
-Customer_null Date_08-Feb-2020 21:40:37 Adopted_Ruby Breed_Lionhead_rabbit Age_2
+﻿Customer_another Date_09-Feb-2020 00:00:40 Adopted_Jerry Breed_Blood_hound Age_5 Total_£300
+Customer_another Date_09-Feb-2020 00:05:23 Adopted_Taia Breed_White_Tabby Age_3 Total_£50

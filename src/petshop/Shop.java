@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -103,10 +103,6 @@ public class Shop extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        CatSpinner = new javax.swing.JSpinner();
-        DogSpinner = new javax.swing.JSpinner();
-        FishSpinner = new javax.swing.JSpinner();
-        RabbitSpinner = new javax.swing.JSpinner();
         clock = new javax.swing.JLabel();
         ToyBoneSpinner = new javax.swing.JSpinner();
         FakeMouseSpinner = new javax.swing.JSpinner();
@@ -213,14 +209,6 @@ public class Shop extends javax.swing.JFrame {
 
         jLabel23.setText("Rabbit Food: £10");
 
-        CatSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
-
-        DogSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
-
-        FishSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
-
-        RabbitSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
-
         clock.setText("(Date and Time)");
 
         ToyBoneSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
@@ -268,6 +256,11 @@ public class Shop extends javax.swing.JFrame {
         });
 
         adoptFish.setText("Adopt");
+        adoptFish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adoptFishActionPerformed(evt);
+            }
+        });
 
         adoptRabbit.setText("Adopt");
         adoptRabbit.addActionListener(new java.awt.event.ActionListener() {
@@ -367,30 +360,20 @@ public class Shop extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel8)
-                                                    .addComponent(CatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(adoptCat)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(adoptCat))
+                                                .addGap(64, 64, 64)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel9)
-                                                    .addComponent(DogSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(adoptDog)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(adoptDog))
+                                                .addGap(68, 68, 68)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel10)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(FishSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(adoptFish)))
-                                                .addGap(2, 2, 2)
+                                                    .addComponent(adoptFish))
+                                                .addGap(60, 60, 60)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel11)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(RabbitSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(adoptRabbit)))))
-                                        .addGap(26, 26, 26))))
+                                                    .addComponent(adoptRabbit))))
+                                        .addGap(58, 58, 58))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
@@ -419,10 +402,6 @@ public class Shop extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CatSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DogSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FishSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RabbitSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(adoptCat)
                     .addComponent(adoptDog)
                     .addComponent(adoptFish)
@@ -522,10 +501,6 @@ public class Shop extends javax.swing.JFrame {
 
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
-        int catAmount = (Integer) CatSpinner.getValue();
-        int dogAmount = (Integer) DogSpinner.getValue();
-        int fishAmount = (Integer) FishSpinner.getValue();
-        int rabbitAmount = (Integer) RabbitSpinner.getValue();
         int tboneAmount = (Integer) ToyBoneSpinner.getValue();
         int fmouseAmount = (Integer) FakeMouseSpinner.getValue();
         int brushAmount = (Integer) BrushSpinner.getValue();
@@ -647,6 +622,15 @@ public class Shop extends javax.swing.JFrame {
         
     }//GEN-LAST:event_adoptRabbitActionPerformed
 
+    private void adoptFishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adoptFishActionPerformed
+        // TODO add your handling code here:
+        AdoptFish adopt = new AdoptFish();
+        setVisible(false);
+        this.dispose();
+        adopt.setAnimal("fish",username);
+        adopt.show();
+    }//GEN-LAST:event_adoptFishActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -701,10 +685,6 @@ public class Shop extends javax.swing.JFrame {
   }
 
     public void setAllZero(){
-        CatSpinner.setValue(0);
-        DogSpinner.setValue(0);
-        FishSpinner.setValue(0);
-        RabbitSpinner.setValue(0);
         ToyBoneSpinner.setValue(0);
         FakeMouseSpinner.setValue(0);
         BrushSpinner.setValue(0);
@@ -748,22 +728,6 @@ public class Shop extends javax.swing.JFrame {
         str = (String) read.next();
         int RabbitFood = Integer.parseInt(str.length() > 2 ? str.substring(str.length() - 2) : str);
         
-        SpinnerNumberModel model = (SpinnerNumberModel) CatSpinner.getModel();
-        CatSpinner.setValue(0);
-        model.setMaximum(Cat);
-        
-        SpinnerNumberModel modeldog = (SpinnerNumberModel) DogSpinner.getModel();
-        DogSpinner.setValue(0);
-        modeldog.setMaximum(Dog);
-        
-        SpinnerNumberModel modelfish = (SpinnerNumberModel) FishSpinner.getModel();
-        FishSpinner.setValue(0);
-        modelfish.setMaximum(Fish);
-        
-        SpinnerNumberModel modelrabbit = (SpinnerNumberModel) RabbitSpinner.getModel();
-        RabbitSpinner.setValue(0);
-        modelrabbit.setMaximum(Rabbit);
-        
         SpinnerNumberModel modeltoybone = (SpinnerNumberModel) ToyBoneSpinner.getModel();
         ToyBoneSpinner.setValue(0);
         modeltoybone.setMaximum(ToyBone);
@@ -805,17 +769,13 @@ public class Shop extends javax.swing.JFrame {
     private javax.swing.JButton BuyNow;
     private javax.swing.JComboBox<String> CatComboBox2;
     private javax.swing.JSpinner CatFoodSpinner;
-    private javax.swing.JSpinner CatSpinner;
     private javax.swing.JComboBox<String> DogComboBox2;
     private javax.swing.JSpinner DogFoodSpinner;
-    private javax.swing.JSpinner DogSpinner;
     private javax.swing.JComboBox<String> FIshComboBox2;
     private javax.swing.JSpinner FakeMouseSpinner;
     private javax.swing.JSpinner FishFoodSpinner;
-    private javax.swing.JSpinner FishSpinner;
     private javax.swing.JComboBox<String> RabbitComboBox2;
     private javax.swing.JSpinner RabbitFoodSpinner;
-    private javax.swing.JSpinner RabbitSpinner;
     private javax.swing.JSpinner ToyBoneSpinner;
     private javax.swing.JToggleButton adoptCat;
     private javax.swing.JToggleButton adoptDog;

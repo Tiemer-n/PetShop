@@ -27,19 +27,18 @@ import javax.swing.JOptionPane;
  *
  * @author Isaac
  */
-public class Adopt extends javax.swing.JFrame {
+public class AdoptFish extends javax.swing.JFrame {
 
     /**
      * Creates new form Adopt
      */
-    public Adopt() {
+    public AdoptFish() {
         initComponents();
     }
     private String animal;
     private String username;
     
     private ArrayList <String> names = new ArrayList<>();
-    private ArrayList <String> age = new ArrayList<>();
     private ArrayList <String> breed = new ArrayList<>();
     private ArrayList <String> description = new ArrayList<>();
     private String price = "£0";
@@ -51,21 +50,18 @@ public class Adopt extends javax.swing.JFrame {
         if(Animal.equals("cat")){
             top.setText("Adopting a Cat:");
             AdoptThisAnimal.setText("Adopt this cat");
-            price = "£50";
-            CostLabel.setText("£50");
             dirl = new File("res/Cats.txt");
         }else if(Animal.equals("dog")){
             top.setText("Adopting a dog");
             AdoptThisAnimal.setText("Adopt this dog");
-            price = "£300";
-            CostLabel.setText("£300");
             dirl = new File("res/Dogs.txt");
         }else if(Animal.equals("rabbit")){
             top.setText("Adopting a Rabbit:");
             AdoptThisAnimal.setText("Adopt this rabbit");
-            price = "£35";
-            CostLabel.setText("£35");
             dirl = new File("res/Rabbits.txt");
+        }else if (Animal.equals("fish")){
+            dirl = new File("res/Fish.txt");
+            price = "£10";
         }
         
         Scanner read = null;
@@ -79,16 +75,15 @@ public class Adopt extends javax.swing.JFrame {
             a.add(read.next());
         }
         
-        int length = a.size()/4;
-        String[][] Store = new String[4][length];
+        int length = a.size()/3;
+        String[][] Store = new String[3][length];
         
         int arf = 0;
-        for (int i = 0; i < a.size(); i+=4 ) {
-            if(!"#".equals((String)a.get(i+3))){
+        for (int i = 0; i < a.size(); i+=3 ) {
+            if(!"#".equals((String)a.get(i+2))){
                 names.add((String)a.get(i));
-                age.add((String)a.get(i+1));
-                breed.add((String)a.get(i+2)); 
-                description.add((String)a.get(i+3));
+                breed.add((String)a.get(i+1)); 
+                description.add((String)a.get(i+2));
                 arf++;
             }
         }
@@ -114,11 +109,11 @@ public class Adopt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         top = new javax.swing.JLabel();
         AnimalNames = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        Age = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Breed = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -126,14 +121,18 @@ public class Adopt extends javax.swing.JFrame {
         Cancel = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Description = new javax.swing.JTextPane();
+        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        CostLabel = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         top.setFont(new java.awt.Font("Serif", 0, 36)); // NOI18N
-        top.setText("Adopting a (animal)");
+        top.setText("Adopting a Fish");
 
         AnimalNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         AnimalNames.addActionListener(new java.awt.event.ActionListener() {
@@ -144,17 +143,13 @@ public class Adopt extends javax.swing.JFrame {
 
         jLabel1.setText("Name:");
 
-        jLabel2.setText("Age:");
-
-        Age.setText("__");
-
         jLabel3.setText("Breed: ");
 
         Breed.setText("__");
 
         jLabel4.setText("Description:");
 
-        AdoptThisAnimal.setText("Adopt this (animal)");
+        AdoptThisAnimal.setText("Adopt this Fish");
         AdoptThisAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdoptThisAnimalActionPerformed(evt);
@@ -170,9 +165,9 @@ public class Adopt extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(Description);
 
-        jLabel5.setText("Cost: ");
+        jLabel2.setText("Cost:");
 
-        CostLabel.setText("__");
+        jLabel5.setText("£10");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,26 +186,22 @@ public class Adopt extends javax.swing.JFrame {
                                 .addComponent(AdoptThisAnimal)
                                 .addGap(96, 96, 96))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
                                 .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(AnimalNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CostLabel))
+                                    .addComponent(jLabel5)
+                                    .addComponent(AnimalNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(44, 44, 44)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(Age)
-                                .addGap(37, 37, 37)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Breed))
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 53, Short.MAX_VALUE)))
+                                .addComponent(Breed)))
+                        .addGap(0, 76, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -222,8 +213,6 @@ public class Adopt extends javax.swing.JFrame {
                     .addComponent(Cancel))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Age)
                     .addComponent(jLabel3)
                     .addComponent(Breed))
                 .addGap(18, 18, 18)
@@ -237,8 +226,8 @@ public class Adopt extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(CostLabel))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addComponent(AdoptThisAnimal)))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -252,7 +241,7 @@ public class Adopt extends javax.swing.JFrame {
         Description.setText(null);
         int index = names.indexOf(AnimalNames.getSelectedItem().toString());
         
-        Age.setText(age.get(index));
+        
         String breed1 = breed.get(index);
         String replaceAll = breed1.replaceAll("_", " ");
         Breed.setText(replaceAll);
@@ -281,7 +270,7 @@ public class Adopt extends javax.swing.JFrame {
            try{
                BufferedWriter out = new BufferedWriter(new FileWriter(dirl,true));
                out.newLine();
-               out.write("Customer_"+username +" Date_"+time+" Adopted_" + Name +" Breed_"+ Breed + " Age_" + age.get(index)+" Total_" + price);
+               out.write("Customer_"+username +" Date_"+time+" Adopted_" + Name +" Breed_"+ Breed +" quantity_1 Total_" + price);
                out.close();
            } catch(FileNotFoundException e ){
                e.printStackTrace();
@@ -302,6 +291,8 @@ public class Adopt extends javax.swing.JFrame {
                  dirl2 = new File("res/Dogs.txt");
              }else if(animal.equals("rabbit")){
                  dirl2 = new File("res/Rabbits.txt");
+             }else if (animal.equals("fish")){
+                 dirl2 = new File("res/Fish.txt");
              }
              BufferedReader br = new BufferedReader(new FileReader(dirl2));
 
@@ -320,16 +311,13 @@ public class Adopt extends javax.swing.JFrame {
                  filename = "Dogs";
              }else if (animal.equals("rabbit")){
                  filename = "Rabbits";
+             }else if (animal.equals("fish")){
+                 filename = "Fish";
              }
              writeToFile(filename,replacement);
 
              
              //finish deleting the speicfied animal --------------------------------------------------------------
-
-
-
-
-
 
 
              //set the code then dispose here
@@ -344,16 +332,18 @@ public class Adopt extends javax.swing.JFrame {
                  change.ChangeStock(0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
              }else if (animal.equals("fish")){
                  change.ChangeStock(0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0);
+             }else if (animal.equals("fish")){
+                 change.ChangeStock(0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
              }
              JOptionPane.showMessageDialog(null, username + ", you have succesfully adopted " + names.get(index) + " for " + price);
-             setVisible(false);
              shop.setUser(username);
+             setVisible(false);
              this.dispose();
              shop.show();
 
 
        } catch(Exception ex ){
-            Logger.getLogger(Adopt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdoptFish.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -406,38 +396,39 @@ public class Adopt extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Adopt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdoptFish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Adopt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdoptFish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Adopt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdoptFish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Adopt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdoptFish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Adopt().setVisible(true);
+                new AdoptFish().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton AdoptThisAnimal;
-    private javax.swing.JLabel Age;
     private javax.swing.JComboBox<String> AnimalNames;
     private javax.swing.JLabel Breed;
     private javax.swing.JToggleButton Cancel;
-    private javax.swing.JLabel CostLabel;
     private javax.swing.JTextPane Description;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel top;
     // End of variables declaration//GEN-END:variables
 }
